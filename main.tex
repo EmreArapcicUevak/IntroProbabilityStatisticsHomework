@@ -111,7 +111,17 @@
 \lstset{style=mystyle}
 
 % Custom commands
-
+\newtcolorbox{quicknote}{
+    colback=yellow!10!white,
+    colframe=yellow!75!black,
+    title=Quick Note,
+    sharp corners,
+    boxrule=0.5pt,
+    left=6pt,
+    right=6pt,
+    boxsep=5pt,
+    arc=0pt
+}
 
 \begin{document}
 	\maketitle
@@ -335,4 +345,36 @@ Average for 100,000 rolls: 6.49
                 In a simulation with a finite number of trials, random fluctuations and variance will influence the results. These random perturbations can cause the simulated averages to deviate from the expected value, particularly noticeable in smaller sample sizes such as 100 rolls. As the number of trials increases, these simulated averages should, according to the Law of Large Numbers, converge toward the expected value, reflecting the average of the distribution of outcomes.
 
                 Despite increasing the number of trials, perfect convergence to the expected value is not guaranteed due to the inherent randomness of each roll. Consequently, the simulated average may not exactly match the expected value but should approximate it more closely as the number of trials grows.
+
+    \pagebreak
+
+    \section{DataSet Analysis}
+        \subsection{Problem Text}
+            Obtain a dataset consisting of 50 samples. You have the flexibility to choose either empirical data you collect or utilize existing datasets from online sources such as WorldBank, stock market records, statistics institutions, IMDB, NBA website, Google Trends, etc. By utilizing a programming language of your choice, you will conduct a comprehensive analysis of the dataset, including the following steps:
+            \begin{enumerate}
+                \item Calculate mean, median, range, quartiles, interquartile range (IQR)
+                \item Create a histogram and box-plot.
+                \item Detect outliers by either using z-scores or IQR.
+                \item Analyse your data set again without outliers (redo a and b).
+                \item Summarize your findings, interpret the data, and reflect on how the presence of outliers impacts the central tendencies and data distribution.
+            \end{enumerate}
+
+        \subsection{Solution}
+            \subsubsection{Code Used}
+                \begin{quicknote}
+                    Due to the large number of images, please execute the provided code to view the output images that are generated.
+                \end{quicknote}
+
+                \lstinputlisting[language=Python]{Code/task5.py}
+            \subsubsection{Explanation of the data}
+                The statistical analysis of the cereal dataset revealed the distorting effects of outliers on key measures of central tendency and variability. Outliers, defined as data points that diverge markedly from the overall pattern of data, can significantly skew statistical results. The interquartile range (IQR) approach was employed to identify and mitigate the influence of these extreme values.
+
+                The analysis showed that outliers had a minimal impact on the mean, suggesting that the dataset's average was not substantially biased by extreme values. However, the removal of outliers provided a more accurate depiction of the median and quartiles, which are indicative of the dataset's central tendency and variability.
+
+                Quartiles, and particularly the first (Q1) and third (Q3) quartiles, are measures that provide insights into the distribution's spread and central position. The presence of outliers can affect these quartiles by artificially expanding or compressing the distribution's middle 50\%, as reflected by the IQR. Once the outliers were removed, the recalculated IQR offered a more faithful representation of the dataset's variability.
+
+                Furthermore, the range of the dataset—defined as the difference between the maximum and minimum values—was also influenced by outliers. Their presence can lead to an exaggerated range, misrepresenting the true variability within the data. The exclusion of outliers resulted in a more constrained range, aligning the statistical representation more closely with the actual distribution of the data.
+
+                Visualizations such as box plots and histograms provided early indications of the outliers' effects on the dataset's distribution. These visual tools revealed a more focused and distinct distribution pattern after the removal of outliers, allowing for a clearer and more accurate understanding of the dataset's characteristics.
+
 \end{document}
