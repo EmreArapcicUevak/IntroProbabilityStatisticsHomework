@@ -34,6 +34,7 @@
 \usepackage{microtype} % Improves spacing
 \usepackage{booktabs} % For nicer tables
 \usepackage{parskip}
+\usepackage{array}
 
 % Setting up the default image path
 \graphicspath{{./Images/}}
@@ -215,4 +216,46 @@
 
                     \item \textbf{Switching Choice:} If my initial choice is incorrect, which occurs with a probability of \( \frac{2}{3} \), the jewel must be in one of the other two chests. Since the spirit will always reveal a chest without the jewel, the remaining unopened chest has a \( \frac{2}{3} \) chance of containing the jewel. Thus, switching the choice leads to a \( \frac{2}{3} \) probability of finding the jewel, reflecting the combined likelihood of the initial wrong choice and the guaranteed action of the spirit revealing a non-jewel chest.
                 \end{enumerate}
+
+    \section{Business Strategy Dilemma}
+        \subsection{Problem Text}
+            \noindent As a coffee shop owner in a small town, you are faced with a significant decision regarding your business strategy, and it’s crucial to make an informed choice. Your competitor, another coffee shop owner in the town, is also pondering the same decision. Here’s the situation:
+
+            \begin{itemize}
+                \item If both you and your competitor choose to expand your businesses, there will be increased competition, resulting in a slight decrease in profits for both of you.
+                \item If one of you chooses to expand while the other chooses to maintain the status quo, the one who expands will gain significant profits, while the other will lose some business but maintain a decent profit.
+                \item If both you and your competitor choose to maintain the status quo, you will continue to earn your usual profits without any additional costs.
+                \item Neither you nor your competitor can communicate during this process, and your decisions are independent of each other.
+            \end{itemize}
+
+            \noindent What strategy would you select in this business scenario, and what factors influence your choice? How do you predict your competitor will decide, and what outcomes do you anticipate for both of your coffee shops? Please provide your reasoning, considering the potential consequences of your choices in this business context.
+    
+        \subsection{Solution}
+            In analyzing the strategic decision to expand a coffee shop business, we will be using game theory; we consider two players in the game: You (Player A) and your competitor (Player B). Each player has two strategies: to expand (E) or maintain status quo (S). The payoffs are as follows:
+
+            \begin{itemize}
+                \item Both players expanding results in increased competition, denoted as a slight decrease in profits (\(-\)).
+                \item One player expanding while the other does not result in significant profit for the expander (\(++\)) and a slight decrease for the non-expander (\(-\)).
+                \item Both players maintaining status quo results in the usual profit (0) for both.
+            \end{itemize}
+
+            The payoff matrix for this game can be represented as:
+
+            \begin{center}
+                \begin{tabular}{cc|c|c|}
+                    \cline{3-4}
+                    & & \multicolumn{2}{ c| }{Player B} \\ \cline{3-4}
+                    & & E & S \\ \cline{1-4}
+                    \multicolumn{1}{ |c  }{\multirow{2}{*}{Player A} } &
+                    \multicolumn{1}{ |c| }{E} & \(-, -\) & \(++, -\) \\ \cline{2-4}
+                    \multicolumn{1}{ |c  }{}                        &
+                    \multicolumn{1}{ |c| }{S} & \(-, ++\) & \(0, 0\) \\ \cline{1-4}
+                \end{tabular}
+            \end{center}
+
+            Analyzing the payoff matrix, we see that if Player A expands (E), the best response for Player B is also to expand (E), leading to a Nash Equilibrium at (E, E). The same applies if Player A chooses to maintain status quo (S). Therefore, there are two Nash Equilibrium in this game: (E, E) and (S, S), indicating that both players will either expand or not expand.
+
+            Given the potential for higher profits, a rational player would choose to expand. However, this scenario assumes that both players are rational and have the same payoff values. In real-world scenarios, other factors such as risk preference, market capacity, and financial constraints could influence the decision.
+            In our game-theoretical approach, we operate under the assumption that if one player chooses to expand and the other does not, the non-expander will incur a greater loss than if both players had chosen to expand. This is a critical consideration, as it influences the identification of Nash Equilibria within the model. However, there is an additional strategic element to consider. By allowing the competitor to expand without opposition, the non-expander not only sustains immediate financial losses but also risks yielding significant market share to the competitor. This could potentially weaken their competitive position in the long term. Conversely, the decision not to expand, while resulting in short-term financial disadvantage, may enable a business to capitalize on future opportunities and overtake the competition as circumstances evolve. It is imperative, therefore, to balance the immediate economic implications against the long-term strategic outlook, recognizing that ceding ground in the short term might offer tactical advantages later on.
+
 \end{document}
