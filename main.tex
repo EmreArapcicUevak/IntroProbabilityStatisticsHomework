@@ -422,4 +422,50 @@ Average for 100,000 rolls: 6.49
                 \item $P(x > 52) = P\left(\frac{x-50}{2} > \frac{52-50}{2}\right) = P(Z > 1) = 1 - P(Z < 1) = 1 - 0.84134 = 0.15866$
                 \item $P(x > 51) = 1 - P(x \leq 51) = 1 - P\left(Z \leq \frac{51-50}{2}\right) = 1 - P(Z < 0.5) = 1 - 0.69146 = 0.30854 = 30.85\%$
             \end{enumerate}
+
+    \pagebreak
+    \section{Inbox Problem}
+        \subsection{Problem Text}
+            An individual's work inbox receives emails throughout the day, and the number of emails arriving follows a Poisson distribution with an average of 6 emails per hour.
+
+            \begin{enumerate}[label=(\alph*)]
+                \item Calculate the probability of receiving at least 4 emails in the next 20 minutes.
+                \item Find the probability of exactly 10 emails arriving in the next 2 hours.
+                \item Calculate the expected number of emails the individual will receive in the next 90 minutes.
+                \item Determine the probability of receiving more emails in the next 45 minutes than in the previous 30 minutes.
+                \item Given that the individual has already received 8 emails in the first hour, find the probability of receiving 2 or fewer emails in the second hour.
+                \item Calculate the probability of not receiving any emails in the next 30 minutes, given that no emails arrived in the previous 45 minutes.
+            \end{enumerate}
+
+        \subsection{Solution}
+            Given that the average number of emails is 6 per hour, we have the following solutions:
+
+            \begin{enumerate}[label=(\alph*)]
+                \item For the average number of emails in 20 minutes ($\frac{1}{3}$ hour), we have $\lambda = 2$:
+                \begin{equation*}
+                    P(x \geq 4) = 1 - (P(x=0) + P(x=1) + P(x=2) + P(x=3)) = 1 - \left(e^{-2} + 2e^{-2} + \frac{2^2}{2!}e^{-2} + \frac{2^3}{3!}e^{-2}\right) = 1 - 0.857 = 0.143
+                \end{equation*}
+
+                \item For $\lambda = 6 \times 2 = 12$ emails in 2 hours, for $k=10$ emails:
+                \begin{equation*}
+                    P(x=10) = \frac{e^{-12} \cdot 12^{10}}{10!} = 0.1048
+                \end{equation*}
+
+                \item For the expected number of emails in 90 minutes ($\frac{3}{2}$ hours), we have $E(x) = \lambda = 6 \times \frac{3}{2} = 9$ emails.
+
+                \item For more emails in the next 45 minutes than in the previous 30 minutes, with $\lambda = 4.5$ and $\lambda_{30} = 3$:
+                \begin{equation*}
+                    P(x_{45} > x_{30}) = \sum_{k=0}^{\infty} P(x_{45}=k) \cdot P(x_{30}<k) = \sum_{k=0}^{\infty} \frac{e^{-4.5} \cdot 4.5^k}{k!} \cdot \left(1 - \sum_{i=0}^{k} \frac{e^{-3} \cdot 3^i}{i!}\right)
+                \end{equation*}
+
+                \item For receiving 2 or fewer emails in the second hour, given 8 emails in the first hour:
+                \begin{equation*}
+                    P(x_{2\text{nd hour}} \leq 2 | x_{1\text{st hour}} = 8) = \frac{P(x_{2\text{nd hour}} \leq 2 \cap x_{1\text{st hour}} = 8)}{P(x_{1\text{st hour}} = 8)} = \frac{0.062}{0.103} \approx 0.602
+                \end{equation*}
+
+                \item For not receiving any emails in the next 30 minutes, given no emails in the previous 45 minutes:
+                \begin{equation*}
+                    P(x_{45} = 0 \cap x_{30} = 0) = P(x_{45} = 0) \cdot P(x_{30} = 0) = e^{-4.5} \cdot e^{-3} = 0.0497 \cdot 0.0491 = 0.0024
+                \end{equation*}
+            \end{enumerate}
 \end{document}
