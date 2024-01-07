@@ -35,6 +35,7 @@
 \usepackage{booktabs} % For nicer tables
 \usepackage{parskip}
 \usepackage{array}
+\usepackage{listings}
 
 % Setting up the default image path
 \graphicspath{{./Images/}}
@@ -74,6 +75,40 @@
 	urlcolor = blue,
 	pdftex
 }
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{keywordcolor}{rgb}{0,0.2,0.4}
+\definecolor{stringcolor}{rgb}{0.5,0.1,0.1}
+
+% Define your own style
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{keywordcolor},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{stringcolor},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=10pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    framexleftmargin=15pt
+}
+
+% Set the default style for listings
+\lstset{style=mystyle}
 
 % Custom commands
 
@@ -258,4 +293,46 @@
             Given the potential for higher profits, a rational player would choose to expand. However, this scenario assumes that both players are rational and have the same payoff values. In real-world scenarios, other factors such as risk preference, market capacity, and financial constraints could influence the decision.
             In our game-theoretical approach, we operate under the assumption that if one player chooses to expand and the other does not, the non-expander will incur a greater loss than if both players had chosen to expand. This is a critical consideration, as it influences the identification of Nash Equilibria within the model. However, there is an additional strategic element to consider. By allowing the competitor to expand without opposition, the non-expander not only sustains immediate financial losses but also risks yielding significant market share to the competitor. This could potentially weaken their competitive position in the long term. Conversely, the decision not to expand, while resulting in short-term financial disadvantage, may enable a business to capitalize on future opportunities and overtake the competition as circumstances evolve. It is imperative, therefore, to balance the immediate economic implications against the long-term strategic outlook, recognizing that ceding ground in the short term might offer tactical advantages later on.
 
+    \section{Simulation of Rolling a 12-Sided Die}
+        \subsection{Problem Text}
+            Write a program in your preferred programming language that simulates the rolling of a 12-sided die a varying number of times. The program should be structured to perform the following steps:
+
+            \begin{enumerate}
+                \item Roll the die 100 times and calculate the average value of these rolls.
+                \item Roll the die 1,000 times and calculate the average value of these rolls.
+                \item Roll the die 10,000 times and calculate the average value of these rolls.
+                \item Roll the die 100,000 times and calculate the average value of these rolls.
+            \end{enumerate}
+
+            After each set of rolls, compare the calculated average values with the expected value of a roll. The expected value should be calculated by hand in advance of running the simulations.
+
+        \subsection{Solution}
+            \subsubsection{simulation}
+                \lstinputlisting[language=Python]{Code/task4.py}
+                The output obtained from running the dice roll simulation code is as follows:
+
+                \begin{verbatim}
+Average for 100 rolls: 6.86
+Average for 1,000 rolls: 6.44
+Average for 10,000 rolls: 6.48
+Average for 100,000 rolls: 6.49
+                \end{verbatim}
+
+            \subsubsection{Hand Calculation}
+                Given a 12-sided die with outcomes $x_i$ for $i=1,2,\ldots,n$ and $n=12$, the average value $\mu$ is calculated as follows:
+                \begin{equation*}
+                    \mu = \frac{\sum_{i=1}^{n} x_i}{n}
+                \end{equation*}
+
+                The expected value $E(X)$ for a discrete random variable is calculated using the probability $p(x_i)$ of each outcome $x_i$:
+                \begin{equation*}
+                    \mu = E(X) = \sum_{i=1}^{n} x_i p(x_i) = \frac{1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12}{12} = \frac{78}{12} = 6.5
+                \end{equation*}
+    
+            \subsubsection{Explanation of the difference between the simulated and hand calculated values}
+                The observed differences between the hand-calculated expected values and the simulated averages from rolling a 12-sided die can be explained by the Law of Large Numbers in probability theory. The theoretical expected value, calculated as the mean outcome of a 12-sided die, is 6.5. This value is predicated on the assumption of an infinite number of rolls for perfect randomization.
+
+                In a simulation with a finite number of trials, random fluctuations and variance will influence the results. These random perturbations can cause the simulated averages to deviate from the expected value, particularly noticeable in smaller sample sizes such as 100 rolls. As the number of trials increases, these simulated averages should, according to the Law of Large Numbers, converge toward the expected value, reflecting the average of the distribution of outcomes.
+
+                Despite increasing the number of trials, perfect convergence to the expected value is not guaranteed due to the inherent randomness of each roll. Consequently, the simulated average may not exactly match the expected value but should approximate it more closely as the number of trials grows.
 \end{document}
