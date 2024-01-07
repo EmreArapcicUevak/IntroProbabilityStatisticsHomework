@@ -30,6 +30,9 @@
 \usepackage{bm} % Adding bold text to math inputs
 \usepackage{pgfplots} % Used for plotting functions
 \usepackage{background}
+\usepackage{cancel} % For cancelling terms visually
+\usepackage{microtype} % Improves spacing
+\usepackage{booktabs} % For nicer tables
 
 % Setting up the default image path
 \graphicspath{{./Images/}}
@@ -86,5 +89,79 @@
 	
 	\tableofcontents
 	\pagebreak
-	
+
+    \section{Superhero Problem}
+        \subsection{Problem Text}
+            \noindent In a world of superheroes, there are 10 superheroes with unique powers, and you need to form a superhero team. Your superhero team will consist of 6 members selected from these 10 superheroes. Each superhero has their own special abilities.
+
+            \begin{enumerate}[label=(\alph*)]
+                \item Calculate the total number of unique ways to form a superhero team of 6 members from the 10 superheroes.
+                \item Each superhero has an associated color: Red, Blue, Green, Yellow, Purple, Orange, Pink, Black, White, and Silver. Calculate the probability that your superhero team, randomly selected, will have at least one member with a Red, Blue, and Green color-related power.
+                \item Among the 10 superheroes, there are 4 heroes with elemental powers (Earth, Water, Fire, Air) and 6 heroes with technology-based powers (Robotics, Hacking, Gadgets, Invention, Nanotechnology, and AI). What is the probability that your superhero team will consist of 3 heroes with elemental powers and 3 heroes with technology-based powers?
+                \item Three of the superheroes are known for their incredible strength, while the others have different abilities. Calculate the probability that your superhero team will have exactly 2 of the 3 strongest superheroes.
+                \item Two of the superheroes have a long history of teaming up on missions. What is the probability that both of them are selected for your new superhero team of 6 members?
+            \end{enumerate}
+
+        \subsection{Solutions}
+
+            \begin{enumerate}[label=(\alph*)]
+                \item
+                \[
+                    \begin{aligned}
+                        \binom{10}{6} &= \frac{10!}{6!(10-6)!} \\
+                        &= \frac{10 \cdot 9 \cdot 8 \cdot 7 \cdot \cancel{6!}}{\cancel{6!} \cdot 4 \cdot 3 \cdot 2 \cdot 1} \\
+                        &= \frac{10 \cdot 9 \cdot 8 \cdot 7}{4 \cdot 3 \cdot 2 \cdot 1} \\
+                        &= \boxed{210}
+                    \end{aligned}
+                \]
+
+                \item
+                \[
+                    \begin{aligned}
+                        P(\text{at least one r,b,g}) &= 1 - P(\text{no r,b,g}) \\
+                        &= 1 - \left( \frac{\binom{7}{6}}{\binom{10}{6}} \right) \\
+                        &= 1 - \left( \frac{7}{210} \right) \\
+                        &= 1 - \frac{1}{30} \\
+                        &= \frac{29}{30} \\
+                        &= \boxed{0.9667}
+                    \end{aligned}
+                \]
+
+                \item
+                \[
+                    \begin{aligned}
+                        P_{3 \text{ elemental,3 technology}} &= \left( \frac{\binom{4}{3} \cdot \binom{6}{3}}{\binom{10}{6}} \right) \\
+                        &= \frac{4 \cdot \frac{6!}{3! \cdot 3!}}{210} \\
+                        &= \frac{4 \cdot 20}{210} \\
+                        &= \frac{80}{210} \\
+                        &= \frac{8}{21} \\
+                        &= \boxed{0.38}
+                    \end{aligned}
+                \]
+
+                \item
+                \[
+                    \begin{aligned}
+                        P_{2 \text{ of 3 strongest}} &= \left( \frac{\binom{3}{2} \cdot \binom{7}{4}}{\binom{10}{6}} \right) \\
+                        &= \frac{3 \cdot \frac{7!}{4! \cdot 3!}}{210} \\
+                        &= \frac{3 \cdot 35}{210} \\
+                        &= \frac{105}{210} \\
+                        &= \frac{1}{2} \\
+                        &= \boxed{0.5}
+                    \end{aligned}
+                \]
+
+                \item
+                \[
+                    \begin{aligned}
+                        P_{\text{both selected}} &= \left( \frac{\binom{2}{2} \cdot \binom{8}{4}}{\binom{10}{6}} \right) \\
+                        &= \frac{1 \cdot \frac{8!}{4! \cdot 4!}}{210} \\
+                        &= \frac{70}{210} \\
+                        &= \frac{1}{3} \\
+                        &= \boxed{0.3333}
+                    \end{aligned}
+                \]
+            \end{enumerate}
+
+    \pagebreak
 \end{document}
