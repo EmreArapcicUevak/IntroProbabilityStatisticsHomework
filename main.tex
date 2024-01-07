@@ -393,4 +393,33 @@ Average for 100,000 rolls: 6.49
 
         \subsection{Solution}
             \lstinputlisting[language=Python]{Code/task6.py}
+    
+    
+    
+    \section{Quality Control at a manufacturing facility}
+        \subsection{Problem Text}
+            In a manufacturing facility, a specific machine produces cylindrical components, and the diameter of these components follows a normal distribution with a mean diameter of 50 millimeters and a standard deviation of 2 millimeters. Quality control measures are in place to ensure that most components meet the required specifications.
+
+            \begin{enumerate}[label=(\alph*)]
+                \item Calculate the probability that a randomly selected component has a diameter between 48 and 52 millimeters.
+                \item The company has strict quality standards, and components with diameters less than 48 millimeters or greater than 52 millimeters are considered defects. What is the probability of a randomly selected component being a defect?
+                \item To optimize production, the company wants to produce components with a diameter greater than 52 millimeters. What percentage of components meet this requirement?
+                \item If the company wants to introduce a new quality control threshold at 51 millimeters, what is the minimum percentage of components that should meet this threshold to maintain a high level of quality (i.e., less than 5\% defective)?
+            \end{enumerate}
+
+
+        \subsection{Solution}
+            Given a normal distribution with parameters:
+            \begin{align*}
+                \mu &= 50\text{mm} \\
+                \sigma &= 2\text{mm}
+            \end{align*}
+
+            The calculations are as follows:
+            \begin{enumerate}[label=(\alph*)]
+                \item $P(48 < x < 52) = P\left(\frac{48-50}{2} < Z < \frac{52-50}{2}\right) = P(-1 < Z < 1) = F(1) - F(-1) = 0.84134 - 0.15866 = 0.6826$
+                \item For defects $d$: $P(d) = 1 - P(48 < x < 52) = 1 - 0.6826 = 0.3174$
+                \item $P(x > 52) = P\left(\frac{x-50}{2} > \frac{52-50}{2}\right) = P(Z > 1) = 1 - P(Z < 1) = 1 - 0.84134 = 0.15866$
+                \item $P(x > 51) = 1 - P(x \leq 51) = 1 - P\left(Z \leq \frac{51-50}{2}\right) = 1 - P(Z < 0.5) = 1 - 0.69146 = 0.30854 = 30.85\%$
+            \end{enumerate}
 \end{document}
