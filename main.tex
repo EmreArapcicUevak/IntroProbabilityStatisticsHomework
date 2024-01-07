@@ -35,6 +35,7 @@
 \usepackage{booktabs} % For nicer tables
 \usepackage{parskip}
 \usepackage{array}
+\usepackage{listings}
 
 % Setting up the default image path
 \graphicspath{{./Images/}}
@@ -75,24 +76,39 @@
 	pdftex
 }
 
-% Define the style for the code listings
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{keywordcolor}{rgb}{0,0.2,0.4}
+\definecolor{stringcolor}{rgb}{0.5,0.1,0.1}
+
+% Define your own style
 \lstdefinestyle{mystyle}{
-    commentstyle=\color{gray},
-    keywordstyle=\color{blue},
-    numberstyle=\tiny\color{gray},
-    stringstyle=\color{purple},
+    language=Python,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{keywordcolor},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{stringcolor},
     basicstyle=\ttfamily\small,
     breakatwhitespace=false,
     breaklines=true,
     captionpos=b,
     keepspaces=true,
     numbers=left,
-    numbersep=5pt,
+    numbersep=10pt,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
-    tabsize=2
+    tabsize=2,
+    frame=single,
+    framexleftmargin=15pt
 }
+
+% Set the default style for listings
+\lstset{style=mystyle}
 
 % Custom commands
 
@@ -291,5 +307,6 @@
             After each set of rolls, compare the calculated average values with the expected value of a roll. The expected value should be calculated by hand in advance of running the simulations.
 
         \subsection{Solution}
-            \subsubsection{Code}
+            \subsubsection{simulation}
+                \lstinputlisting[language=Python]{Code/task4.py}
 \end{document}
