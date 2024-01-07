@@ -29,13 +29,14 @@
 \usepackage{tcolorbox} % for adding colored text boxes
 \usepackage{bm} % Adding bold text to math inputs
 \usepackage{pgfplots} % Used for plotting functions
+\usepackage{background}
 
 % Setting up the default image path
 \graphicspath{{./Images/}}
 
 % Implementing authro details
-\title{}
-\author{}
+\title{Understanding Probability and Statistics: Homework Solutions}
+\author{Emre Arapcic-Uevak}
 \date{}
 
 % Setting up the fancy page style
@@ -46,6 +47,18 @@
 	\renewcommand{\footrulewidth}{1pt}
 }
 \pagestyle{customStyle}
+
+% Settings for the background package
+\backgroundsetup{
+    scale=1, % Size - adjust as necessary
+    color=black, % Color of the logo
+    opacity=0.1, % Opacity - adjust to your liking; 0 = fully transparent, 1 = fully opaque
+    angle=0, % Rotation angle if you want to rotate the logo
+    position=current page.center, % Position - you can change this as necessary
+    vshift=0cm, % Vertical shift - adjust as necessary
+    hshift=0cm, % Horizontal shift - adjust as necessary
+    contents={\includegraphics[width=10cm]{Images/Logo}} % Replace 'your_logo_filename' with the name of your logo file
+}
 
 % Setting up hyperref options
 \hypersetup {
@@ -66,7 +79,7 @@
 	
 	\begin{abstract}
 		\begin{center}
-			\noindent abstract
+			\noindent \"Understanding Probability and Statistics: Homework Solutions\" is a straightforward and accessible document designed to assist students in grasping the fundamental concepts of probability and statistics. This assignment blends traditional hand-written problem-solving methods with basic Python programming to offer a practical approach to learning. It covers a variety of problems, from simple probability calculations to more intricate statistical analyses. Each question is addressed with clear, concise solutions, demonstrating the process step-by-step, both on paper and through Python code. This approach not only helps in understanding the theoretical aspects but also in applying these concepts practically. The document serves as an essential tool for students looking to strengthen their foundation in probability and statistics through hands-on learning and problem-solving.
 		\end{center}
 	\end{abstract}
 	\pagebreak
